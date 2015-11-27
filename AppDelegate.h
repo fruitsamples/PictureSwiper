@@ -1,6 +1,7 @@
 /*
-     File: main.m 
- Abstract: Main code file for PictureSwiper sample. 
+     File: AppDelegate.h 
+ Abstract: This sample's NSApplicationDelegate object.
+  
   Version: 1.1 
   
  Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple 
@@ -47,7 +48,11 @@
 
 #import <Cocoa/Cocoa.h>
 
-int main(int argc, char *argv[])
-{
-    return NSApplicationMain(argc, (const char **) argv);
-}
+@interface AppDelegate : NSObject <NSApplicationDelegate, NSPageControllerDelegate>
+
+@property (assign) IBOutlet NSWindow *window;
+@property (assign) IBOutlet NSPageController *pageController;
+
+- (IBAction)takeTransitionStyleFrom:(id)sender;
+
+@end

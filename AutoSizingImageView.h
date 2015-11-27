@@ -1,6 +1,7 @@
 /*
-     File: main.m 
- Abstract: Main code file for PictureSwiper sample. 
+     File: AutoSizingImageView.h 
+ Abstract: Main image view properly sized within its scroll view.
+  
   Version: 1.1 
   
  Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple 
@@ -47,7 +48,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-int main(int argc, char *argv[])
-{
-    return NSApplicationMain(argc, (const char **) argv);
-}
+@interface AutoSizingImageView : NSImageView
+
+@end

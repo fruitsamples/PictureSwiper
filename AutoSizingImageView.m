@@ -1,6 +1,7 @@
 /*
-     File: main.m 
- Abstract: Main code file for PictureSwiper sample. 
+     File: AutoSizingImageView.m 
+ Abstract: Main image view properly sized within its scroll view.
+  
   Version: 1.1 
   
  Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple 
@@ -45,9 +46,21 @@
   
  */
 
-#import <Cocoa/Cocoa.h>
+#import "AutoSizingImageView.h"
 
-int main(int argc, char *argv[])
-{
-    return NSApplicationMain(argc, (const char **) argv);
+@implementation AutoSizingImageView
+
+// The imageView should always be the same size as the enclosing scrollview regardless of
+// the bounds of the clipView. We need to do this manually because auto-layout would try
+// to size the view to the bounds of the clipview effectively nulling the magnification.
+//
+- (void)setFrameSize:(NSSize)newSize {
+    NSScrollView *scrollView = [self enclosingScrollView];
+    if (scrollView) {
+        [super setFrameSize:scrollView.frame.size];
+    } else {
+        [super setFrameSize:newSize];
+    }
 }
+
+@end
